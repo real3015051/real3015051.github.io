@@ -1,6 +1,33 @@
-html{
-    font-family: serif;
-    background: rgb(253, 254, 246);
-    margin: 0;
+:root {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-hover: #2d2d2d;
+  --text-primary: #cccccc;
+  --text-muted: #858585;
+  --accent: #0078d4;
+  --border: #3c3c3c;
+  --activity-bar: #333333;
 }
 
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f3f3;
+  --bg-hover: #e8e8e8;
+  --text-primary: #333333;
+  --text-muted: #6e6e6e;
+  --border: #e5e5e5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  height: 100vh;
+}
