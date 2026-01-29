@@ -1,33 +1,218 @@
-:root {
-  --bg-primary: #1e1e1e;
-  --bg-secondary: #252526;
-  --bg-hover: #2d2d2d;
-  --text-primary: #cccccc;
-  --text-muted: #858585;
-  --accent: #0078d4;
-  --border: #3c3c3c;
-  --activity-bar: #333333;
-}
+html {
+      --bg-primary: #1e1e1e;
+      --bg-secondary: #252526;
+      --bg-hover: #2d2d2d;
+      --text-primary: #cccccc;
+      --text-muted: #858585;
+      --accent: #0078d4;
+      --border: #3c3c3c;
+      --activity-bar: #333333;
+    }
 
 .light {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f3f3f3;
-  --bg-hover: #e8e8e8;
-  --text-primary: #333333;
-  --text-muted: #6e6e6e;
-  --border: #e5e5e5;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f3f3;
+    --bg-hover: #e8e8e8;
+    --text-primary: #333333;
+    --text-muted: #6e6e6e;
+    --border: #e5e5e5;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  display: flex;
-  height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+}
+
+.activity-bar {
+    width: 48px;
+    background: var(--activity-bar);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    border-right: 1px solid var(--border);
+}
+
+.light .activity-bar {
+    background: #2c2c2c;
+}
+
+.activity-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 20px;
+    border-left: 2px solid transparent;
+}
+
+.activity-icon:hover,
+.activity-icon.active {
+    color: #ffffff;
+}
+
+.activity-icon.active {
+    border-left-color: #ffffff;
+}
+
+.activity-icon.bottom {
+    margin-top: auto;
+}
+
+/* sidebar */
+.sidebar {
+    width: 220px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+
+.sidebar-header {
+    padding: 10px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.file-tree {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.tree-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    gap: 8px;
+}
+
+.tree-item:hover {
+    background: var(--bg-hover);
+}
+
+.tree-item.active {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.tree-item i {
+    width: 16px;
+    text-align: center;
+}
+
+/* file icon colors */
+.icon-folder { color: #dcb67a; }
+.icon-js { color: #f1e05a; }
+.icon-html { color: #e34c26; }
+.icon-css { color: #563d7c; }
+.icon-md { color: #083fa1; }
+.icon-json { color: #f5de19; }
+
+/* main content area */
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* tabs */
+.tabs-bar {
+    display: flex;
+    background: var(--bg-hover);
+    border-bottom: 1px solid var(--border);
+}
+
+.tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tab:hover {
+    background: var(--bg-secondary);
+}
+
+.tab.active {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--accent);
+    margin-top: -1px;
+}
+
+.tab i {
+    font-size: 12px;
+}
+
+/* content */
+.content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.content h1 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.content p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+
+.status-bar {
+    height: 22px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #ffffff;
+    gap: 15px;
+}
+
+.status-bar span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-bar .right {
+    margin-left: auto;
+}
+
+/* responsive stuff */
+@media (max-width: 600px) {
+    .sidebar {
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    }
 }
